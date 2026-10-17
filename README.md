@@ -1,38 +1,85 @@
-# Machine Learning Role on Modelling
+# Blur, Bokeh & Normal Image Classification
 
-This repository serves as a summary of our ML work on Google Colab. The following notebooks are reflected from our workspace on Google Drive at [this link](https://drive.google.com/drive/folders/1RGJoxtWvnND563kQw57r1kUIIQe5HLzu). Do note that not all files are pushed to GitHub but only some important files.
+**Bangkit Academy 2024 Capstone Project**
 
-## Pre-project Exploration
-We do simple implementation about proof of concept using Laplacian method. The notebook is available at [Project Proposal](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/Project_Proposal.ipynb)
+## Project Overview
 
-## Exploration
-The complete summary of each model performance is available at [Model Performance Summary](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/%5B0%5D_Model_Performance_Summary.ipynb), but here are some key notes:
+This project focuses on an image-quality classification model that identifies product photos as **blur**, **bokeh**, or **normal**. The model supports automated image review and feedback for sellers in a marketplace application.
 
-| Notebook Filename | Description | Best Accuracy (%) |
-|-----------------|-----------------|-----------------|
-| [TL with InceptionV3](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/TL_with_InceptionV3.ipynb) | Use InceptionV3 (all layers) pre-trained model with fine-tuning | 95.61 ✴️ |
-| [Plain Deep Learning Approach](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/Plain_Deep_Learning_Approach.ipynb) | Only plain deep learning or basic CNN | 77.08 |
-| [End-to-End Deep Learning Approach](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/End_to_End_Deep_Learning_Approach.ipynb) | Embed object detection model to main model and train on this big model | 65.79 |
-| [TL with InceptionV3 (mixed3)](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/TL_with_InceptionV3_(mixed3).ipynb) | Use InceptionV3 (until layer mixed3) pre-trained model with fine-tuning | 85.96 |
-| [TL with Variance](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/TL_with_Variance.ipynb) | Use InceptionV3 (mixed3) pre-trained model with custom layer to calculate variance of Laplacian | 90.35 |
-| [TL with FFT](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/TL_with_FFT.ipynb) | Use InceptionV3 (mixed3) pre-trained model with custom layer to preprocess input using Fast Fourier Transform | 80.70 |
-| [TL with FFT and Variance](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/TL_with_FFT_and_Variance.ipynb) | Use InceptionV3 (mixed3) pre-trained model with custom layer to preprocess input using Fast Fourier Transform and calculate variance of Laplacian | 54.39 |
-| [TL with Custom Weighted Loss](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/TL_with_Custom_Weighted_Loss.ipynb) | Use InceptionV3 (mixed3) pre-trained model with custom loss that weights misclassified on blur class higher than other classes | 83.30 |
-| [Hand Designed Approach](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/Hand_Designed_Approach.ipynb) | Manually find threshold that seperate each class, however, this idea was dropped due to its unfavorable spread on scatter plot | Unknown |
+Our team integrated the model through cloud services into **web and mobile applications**. This repository documents the machine learning development and experiments behind that feature.
 
-Note: Best accuracy is calculated on the dataset provided by Braincore available at [this link](https://drive.google.com/drive/u/5/folders/1clhOFdWTYSxA_DwNp-4_B9NvYzizU856).
+## My Contribution
 
-## Performance Exploration (Trial and Error)
-1. [Transfer Learning + Variance Approach - Test Random Initialization](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/Transfer_Learning_%2B_Variance_Approach_Test_Random_Initialization.ipynb)
-2. [TL with InceptionV3 (mixed3) Retrained](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/TL_with_InceptionV3_(mixed3)_Retrained.ipynb)
+I contributed to **model development, training, and experimentation** as part of the Machine Learning team. Other team members were responsible for web development, mobile development, and cloud deployment.
 
-Summary of each attempt is available at [this link](https://docs.google.com/document/d/1_wMoe67zms_sX22tSYWRSqcihyM6Hmtmuvmzmk9k07Q)
+## Research Approach
 
-## Final Model Performance Overview
-![Accuracy and Loss](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/Images/Accuracy%20and%20Loss.png)
+We started with a Laplacian-based proof of concept, then explored convolutional neural networks, transfer learning, and image-processing features. We compared model architectures and training strategies, investigated unsuccessful approaches, and evaluated the results using recorded accuracy, training curves, and confusion matrices.
 
-![Confusion Matrix on Test Set](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/Images/Confusion%20Matrix%20on%20Test%20Set.png)
-![Confusion Matrix on Validation Set](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All/blob/main/Images/Confusion%20Matrix%20on%20Validation%20Set.png)
+The initial proof of concept is available in the [Project Proposal](Project_Proposal.ipynb).
 
-## Current Exploration
-[Completed]
+### Dataset Composition
+
+All model-experiment notebooks used the same dataset split, containing **3,417 images across three classes**.
+
+| Dataset split | Images | Percentage |
+| --- | ---: | ---: |
+| Training | 2,910 | 85.2% |
+| Train-validation | 328 | 9.6% |
+| Validation | 114 | 3.3% |
+| Test | 65 | 1.9% |
+| **Total** | **3,417** | **100.0%** |
+
+These values describe the split sizes, not the distribution of images among the three classes.
+
+## Experiment Results
+
+We explored nine approaches. The accuracies below are **historical results reported in the project notebooks**, not independently revalidated production metrics. See the [Model Performance Summary](%5B0%5D_Model_Performance_Summary.ipynb) for the original comparison.
+
+| Approach | Description | Best reported accuracy |
+| --- | --- | ---: |
+| [InceptionV3 fine-tuning](TL_with_InceptionV3.ipynb) | Fine-tuned the full pretrained InceptionV3 model. | **95.61%** ✴️ |
+| [InceptionV3 + Laplacian variance](TL_with_Variance.ipynb) | Combined InceptionV3 features up to `mixed3` with Laplacian variance. | 90.35% |
+| [InceptionV3 (`mixed3`)](TL_with_InceptionV3_%28mixed3%29.ipynb) | Used pretrained InceptionV3 up to the `mixed3` layer. | 85.96% |
+| [InceptionV3 + custom weighted loss](TL_with_Custom_Weighted_Loss.ipynb) | Assigned a higher penalty to blur-class misclassifications. | 83.30% |
+| [InceptionV3 + FFT](TL_with_FFT.ipynb) | Explored Fast Fourier Transform preprocessing. | 80.70% |
+| [Basic CNN](Plain_Deep_Learning_Approach.ipynb) | Trained a CNN without pretrained features. | 77.08% |
+| [End-to-end deep learning](End_to_End_Deep_Learning_Approach.ipynb) | Integrated object detection into a larger model. | 65.79% |
+| [InceptionV3 + FFT + variance](TL_with_FFT_and_Variance.ipynb) | Combined FFT preprocessing with Laplacian-variance features. | 54.39% |
+| [Hand-designed classification](Hand_Designed_Approach.ipynb) | Tested manually selected thresholds; discontinued because the classes were not sufficiently separated. | Not reported |
+
+**Key finding:** Full InceptionV3 fine-tuning achieved the highest reported accuracy. Adding handcrafted features did not consistently improve performance. Although the dataset split was shared, training configurations differed across experiments, so the table should not be interpreted as a fully controlled benchmark.
+
+## Additional Trials
+
+Further experiments explored initialization and retraining:
+
+- [Transfer learning + variance: random initialization](Transfer_Learning_%2B_Variance_Approach_Test_Random_Initialization.ipynb)
+- [InceptionV3 (`mixed3`): retraining](TL_with_InceptionV3_%28mixed3%29_Retrained.ipynb)
+
+## Evaluation Visuals
+
+**Training accuracy and loss**
+
+![Training accuracy and loss](Images/Accuracy%20and%20Loss.png)
+
+**Test-set confusion matrix**
+
+![Test-set confusion matrix](Images/Confusion%20Matrix%20on%20Test%20Set.png)
+
+**Validation-set confusion matrix**
+
+![Validation-set confusion matrix](Images/Confusion%20Matrix%20on%20Validation%20Set.png)
+
+## Data Availability and Reproducibility
+
+The experiments were performed in Google Colab using a dataset provided by **Braincore**. This repository preserves selected notebooks and evaluation figures, but does not contain the original dataset or complete execution environment.
+
+The original Google Drive links are no longer accessible and have been omitted. Reproducing the experiments may require authorized dataset access, compatible dependencies, and updated file paths. The reported results have not been independently reproduced for this README update.
+
+## Original Project and Credits
+
+This project was developed collaboratively during **Bangkit Academy 2024**. The original team organization also contains the broader web, mobile, and cloud components.
+
+- [Original Machine Learning repository](https://github.com/Bangkit-Capstone-C241-BB01/BlurOrBokeh_ML_All)
+- [Bangkit Capstone team organization](https://github.com/Bangkit-Capstone-C241-BB01)
